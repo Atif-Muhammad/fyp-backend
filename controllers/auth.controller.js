@@ -35,14 +35,15 @@ export const create = async (req, res) => {
     res
       .cookie("FYP", token, {
         httpOnly: true,
-        sameSite: "strict",
-        secure: false,
+        sameSite: "none",
+        secure: true,
       })
       .json({ success: true, data: email });
   } catch (error) {
     res.status(500).json({ cause: error.message });
   }
 };
+
 export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -74,8 +75,8 @@ export const login = async (req, res) => {
     res
       .cookie("FYP", token, {
         httpOnly: true,
-        sameSite: "strict",
-        secure: false,
+        sameSite: "none",
+        secure: true,
       })
       .send({ success: true, data: existing?.email });
   } catch (error) {
