@@ -4,8 +4,8 @@ import jwt from "jsonwebtoken";
 
 export const create = async (req, res) => {
   try {
-    const { email, password, re_password } = req.body;
-    if (!email || !password || !re_password || password !== re_password) {
+    const { email, password } = req.body;
+    if (!email || !password) {
       res.status(400).json("Missing Required field(s)");
     }
 
